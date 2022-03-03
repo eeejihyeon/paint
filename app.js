@@ -1,5 +1,6 @@
 const canvas = document.querySelector("#jscanvas");
 const ctx = canvas.getContext("2d");
+const colors = document.querySelectorAll(".jscolor");
 
 canvas.width = 700;
 canvas.height = 700;
@@ -30,9 +31,9 @@ function onMouseMove(event) {
   }
 }
 
-function onMouseDown(event) {
-  painting = true;
-}
+// function onMouseDown(event) {
+//   painting = true;
+// }
 
 // function onMouseUp(event) {
 //   stopPainting();
@@ -42,12 +43,21 @@ function onMouseDown(event) {
 //   painting = false;
 // }
 
+function changeColor(event) {
+  const color = event.target.style.backgroundColor;
+  ctx.strokeStyle = color;
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
 }
+
+Array.from(colors).forEach((color) =>
+  color.addEventListener("click", changeColor)
+);
 
 // mousedown: 클릭했을 때 발생하는 event
 
