@@ -25,5 +25,5 @@ li {
 }
 
 button {
-  background-color: none;
+  all: unset;
 }
